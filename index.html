@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Climbing area finder</title>
+</head>
+
+<body>
+    <header>
+        <h1>Find a place to climb in your area!</h1>
+    </header>
+
+        <main>
+            <form id="climbFinder">
+                <label for="address" class="screen-reader-text">Enter a location</label>
+                <input type="textbox" id="address" name="location" required>
+                <!-- <label for="distance" class="screen-reader-text">How many miles</label> -->
+                <!-- <select type="number" id="distance" name="distance">
+                    <option value="10mi">10 Miles</option>
+                    <option value="25mi">25 Miles</option>
+                    <option value="50mi">50 Miles</option>
+                    <option value="100mi">100 Miles</option>
+                    <option value="anywhere">Anywhere</option>
+                </select> -->
+                <input type="button" value="search" id="submit">
+            </form>
+
+            <div id="map"></div>
+            <div class="hide" id="search-results"></div>
+        </main>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="index.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1OurySFNmim0G5iuXQ-8To7tec6RO0qk&callback=initMap&libraries=&v=weekly" type="text/javascript"></script>
+</body>
+
+<footer>
+    <p>Data provided by<a href="https://www.mountainproject.com/data">Mountain Project</a> and <a href="https://developers.google.com/maps/"> Google maps</a></p> 
+</footer>
+
+</html>
