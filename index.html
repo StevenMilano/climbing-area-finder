@@ -15,6 +15,7 @@
     </header>
 
         <main>
+            <p id="js-error-message" class="error-message"></p>
             <form id="climbFinder">
                 <label for="address" class="screen-reader-text">Enter a location</label>
                 <input type="textbox" id="address" name="location" required>
@@ -30,7 +31,10 @@
             </form>
 
             <div id="map"></div>
-            <div class="hide" id="search-results"></div>
+            <div class="hide" id="search-results">
+                <ul id = results-list>
+                </ul>
+            </div>
         </main>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
