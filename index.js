@@ -1,6 +1,7 @@
 var map, infoWindow;
 var lon;
 var lat;
+var limit;
 let mountainProjectURL = "https://www.mountainproject.com/data/get-routes-for-lat-lon";
 let mountainProjectKey = "200793847-4c8ca95c19e7a222488e00479926bf74"
 
@@ -24,11 +25,10 @@ function geocodeAddress(geocoder, resultsMap) {
         map: resultsMap,
         position: results[0].geometry.location
       });
-      console.log(results[0].geometry.location.lng());
-      console.log(results[0].geometry.location.lat());
       lon = results[0].geometry.location.lng();
       lat = results[0].geometry.location.lat();
-      getLngLat(lat, lon);
+      limit = $('#js-max-results').val();
+      getLngLat(lat, lon, limit);
     } else {
       alert("Geocode was not successful for the following reason: " + status);
     }
@@ -41,13 +41,13 @@ function formatQueryParams(params) {
       return qureyItems.join('&');
 }
 
-function getLngLat (querry) {
+function getLngLat (querry1, querry2, limit=50) {
   var params = {
     key: mountainProjectKey,
-    lat: lat,
-    lon: lon,
+    lat: querry1,
+    lon: querry2,
     // maxDistance: querry,
-    // maxResults: querry
+    limit
   };
   var queryString = formatQueryParams(params);
   var url = mountainProjectURL+ '?' + queryString;
