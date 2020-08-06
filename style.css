@@ -1,4 +1,4 @@
-.screen-reader-text { 
+/* .screen-reader-text { 
     border:0;   
     clip: rect(1px, 1px, 1px, 1px); 
     clip-path: inset(50%);
@@ -8,7 +8,7 @@
     overflow: hidden; 
     position: absolute !important;
     word-wrap:normal !important;
- }
+ } */
 
  #map {
     height: 400px;
@@ -19,4 +19,8 @@
     height: 100%;
     margin: 0;
     padding: 0;
+  }
+
+  .hidden {
+    display: none;
   }

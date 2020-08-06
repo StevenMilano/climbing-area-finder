@@ -73,14 +73,17 @@ function getResults () {};
 
 function getMarkers () {};
 
-function displayResults () {
+function displayResults (responseJson) {
   console.log(responseJson);
+  $('#search-results').removeClass('hidden');
   $('#results-list').empty();
-  for (let i = 0; i < responseJson.data.length; i++) {
+  for (let i = 0; i < responseJson.routes.length; i++) {
       $('#results-list').append(
-          `<li><a href='${responseJson.data[i].url}'><h3>${responseJson.data[i].fullName}</h3></a>
-          <p>${responseJson.data[i].description}</p>
+          `<li><a href='${responseJson.routes[i].url}'><h3>${responseJson.routes[i].name}</h3></a>
+          <ul>Type: ${responseJson.routes[i].type}</ul>
+          <ul>Grade: ${responseJson.routes[i].rating}</ul>
+          <ul>Stars: ${responseJson.routes[i].stars}</ul>
+          <ul>Location: ${responseJson.routes[i].location[i]}</ul>
           </li>`
         )};
-  $('#search-results').removeClass('hidden');
 }
