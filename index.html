@@ -18,15 +18,17 @@
             <p id="js-error-message" class="error-message"></p>
             <form id="climbFinder">
                 <label for="address" class="screen-reader-text">Enter a location</label>
-                <input type="textbox" id="address" name="location" required>
-                <!-- <label for="distance" class="screen-reader-text">How many miles</label> -->
-                <!-- <select type="number" id="distance" name="distance">
-                    <option value="10mi">10 Miles</option>
-                    <option value="25mi">25 Miles</option>
-                    <option value="50mi">50 Miles</option>
-                    <option value="100mi">100 Miles</option>
-                    <option value="anywhere">Anywhere</option>
-                </select> -->
+                <input type="textbox" id="address" name="address" required>
+                <label for="resultLimit" class="screen-reader-text">Result limit</label>
+                <input type="number" id="resultsLimit" name="resultLimit" value="50" max="500">
+                <label for="distance" class="screen-reader-text">How many miles</label>
+                <select type="number" id="distance" name="distance">
+                    <option value="10">10 Miles</option>
+                    <option value="25">25 Miles</option>
+                    <option value="50">50 Miles</option>
+                    <option value="100">100 Miles</option>
+                    <option value="200">200 Miles</option>
+                </select>
                 <input type="button" value="search" id="submit">
             </form>
 
