@@ -26,15 +26,19 @@ function geocodeAddress(geocoder, resultsMap) {
         map: resultsMap,
         position: results[0].geometry.location
       });
-      lon = results[0].geometry.location.lng();
-      lat = results[0].geometry.location.lat();
-      maxResults = $('#js-max-results').val();
-      maxDistance = $('#distance').val();
-      getLngLat(lat, lon, maxDistance, maxResults);
+      getResults(results);
+      getLngLat(lat, lon, maxDistance, maxResults, resultsMap);
     } else {
       alert("Geocode was not successful for the following reason: " + status);
     }
   });
+}
+
+function getResults(results) {
+  lon = results[0].geometry.location.lng();
+  lat = results[0].geometry.location.lat();
+  maxResults = $('#js-max-results').val();
+  maxDistance = $('#distance').val();
 }
 
 function formatQueryParams(params) {
@@ -43,7 +47,7 @@ function formatQueryParams(params) {
       return qureyItems.join('&');
 }
 
-function getLngLat (querry1, querry2, querry3, limit=50) {
+function getLngLat (querry1, querry2, querry3, limit=50, map) {
   var params = {
     key: mountainProjectKey,
     lat: querry1,
@@ -55,7 +59,6 @@ function getLngLat (querry1, querry2, querry3, limit=50) {
   var url = mountainProjectURL+ '?' + queryString;
 
   console.log(url);
-
   fetch(url)
     .then(respone => {
       if(respone.ok) {
@@ -63,18 +66,27 @@ function getLngLat (querry1, querry2, querry3, limit=50) {
       }
       throw new Error(respons.statusText);
     })
-    .then(responseJson => displayResults(responseJson))
+    .then((responseJson) => {
+      setMarkers (map, responseJson);
+      displayResults(responseJson);
+    })
     .catch(err => {
       $('#js-error-message').text(`Something went wrong ${err.message}`);
     });
 };
 
-function getResults () {};
-
-function getMarkers () {};
+function setMarkers (map, responseJson) {
+  for (let j = 0; j < responseJson.routes.length; j++) {
+    var marker = new google.maps.Marker({
+      position: { lat: responseJson.routes[j].latitude, lng: responseJson.routes[j].longitude },
+      map: map,
+      title: responseJson.routes[j].name
+    });
+  }
+  marker.setMap(map);
+};
 
 function displayResults (responseJson) {
-  console.log(responseJson);
   $('#search-results').removeClass('hidden');
   $('#results-list').empty();
   for (let i = 0; i < responseJson.routes.length; i++) {
@@ -83,7 +95,7 @@ function displayResults (responseJson) {
           <ul>Type: ${responseJson.routes[i].type}</ul>
           <ul>Grade: ${responseJson.routes[i].rating}</ul>
           <ul>Stars: ${responseJson.routes[i].stars}</ul>
-          <ul>Location: ${responseJson.routes[i].location[i]}</ul>
+          <ul>Location: ${responseJson.routes[i].location[1]}</ul>
           </li>`
         )};
 }
