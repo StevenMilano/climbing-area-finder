@@ -26,10 +26,6 @@ function geocodeAddress(geocoder, resultsMap) {
   geocoder.geocode({ address: address }, (results, status) => {
     if (status === "OK") {
       resultsMap.setCenter(results[0].geometry.location);
-      new google.maps.Marker({
-        map: resultsMap,
-        position: results[0].geometry.location
-      });
       getResults(results);
       getLngLat(lat, lon, maxDistance, maxResults, resultsMap);
     } else {
