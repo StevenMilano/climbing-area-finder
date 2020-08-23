@@ -1,26 +1,118 @@
-/* .screen-reader-text { 
-    border:0;   
-    clip: rect(1px, 1px, 1px, 1px); 
-    clip-path: inset(50%);
-    height: 1px; 
-    margin: -1px;
-    width: 1px; 
-    overflow: hidden; 
-    position: absolute !important;
-    word-wrap:normal !important;
- } */
+ * {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+ }
 
- #map {
-    height: 400px;
-    width: 100%;
-  }
+ h1 {
+   font-size: 32pt;
+   margin: 10pt;
+   line-height: 48px;
+ }
+.links {
+  font-weight: 600;
+   text-decoration: none;
+   color: #185970;
+}
 
-  html, body {
+.links:hover {
+  color: #aeb118;
+  text-decoration: underline;
+}
+ 
+ h3 {
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 0px;
+}
+
+ header {
+   text-align: center;
+   margin: auto;
+ }
+.form {
+  display: flex;
+  flex-direction: column;
+}
+ #climbFinder {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin-bottom: 10px;
+ }
+
+ input {
+   width: 200px;
+   height: 50px;
+   margin-bottom: 10px;
+ }
+
+ label {
+  font-size: 16pt;
+ }
+
+ select {
+  width: 200px;
+  height: 50px;
+  margin-bottom: 10px;
+ }
+
+ #js-error-message {
+   text-align: center;
+ }
+
+ li {
+   list-style: none;
+   
+ }
+
+ul {
+  padding-left: 0px;
+}
+
+.center-text {
+  display: flex;
+  justify-content: center;
+}
+
+#map {
+  margin: auto;
+  height: 400px;
+  width: 80%;
+}
+
+html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+  text-align: center;
+}
+
+@media all and (min-width: 1000px) {
+  h1 {
+    padding-bottom: 20px;
+  }
+  #climbFinder {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    width: 80%;
   }
 
-  .hidden {
-    display: none;
+  .form {
+    margin-bottom: 5px;
+    margin-right: 10px;
   }
+
+  input#submit {
+    align-self: center;
+    margin-top: 25px;
+  }
+}

@@ -80,6 +80,7 @@ function getLngLat (querry1, querry2, querry3, limit=50, map) {
 };
 
 
+
 //sets the markers onto the map with the lat and lng from the mountain project Json object
 function setMarkers (map, responseJson) {
   for (let j = 0; j < responseJson.routes.length; j++) {
@@ -92,17 +93,20 @@ function setMarkers (map, responseJson) {
   marker.setMap(map);
 };
 
+
 //handles displaying the results from the Json object
 function displayResults (responseJson) {
   $('#search-results').removeClass('hidden');
   $('#results-list').empty();
   for (let i = 0; i < responseJson.routes.length; i++) {
       $('#results-list').append(
-          `<li><a target="_blank" href='${responseJson.routes[i].url}'><h3>${responseJson.routes[i].name}</h3></a>
-          <ul>Type: ${responseJson.routes[i].type}</ul>
-          <ul>Grade: ${responseJson.routes[i].rating}</ul>
-          <ul>Stars: ${responseJson.routes[i].stars}</ul>
-          <ul>Location: ${responseJson.routes[i].location[1]}</ul>
-          </li>`
+          `<div class="center-text">
+            <li><a class="links" target="_blank" href='${responseJson.routes[i].url}'><h3>${responseJson.routes[i].name}</h3></a>
+              <ul>Type: ${responseJson.routes[i].type}</ul>
+              <ul>Grade: ${responseJson.routes[i].rating}</ul>
+              <ul>Stars: ${responseJson.routes[i].stars}</ul>
+              <ul>Location: ${responseJson.routes[i].location[1]}</ul>
+            </li>
+          </div>`
         )};
 }
