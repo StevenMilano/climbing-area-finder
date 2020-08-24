@@ -100,13 +100,13 @@ function displayResults (responseJson) {
   $('#results-list').empty();
   for (let i = 0; i < responseJson.routes.length; i++) {
       $('#results-list').append(
-          `<div class="center-text">
-            <li><a class="links" target="_blank" href='${responseJson.routes[i].url}'><h3>${responseJson.routes[i].name}</h3></a>
-              <ul>Type: ${responseJson.routes[i].type}</ul>
-              <ul>Grade: ${responseJson.routes[i].rating}</ul>
-              <ul>Stars: ${responseJson.routes[i].stars}</ul>
-              <ul>Location: ${responseJson.routes[i].location[1]}</ul>
-            </li>
+          `<div class="result-card">
+            <ul><a class="list-links" target="_blank" href='${responseJson.routes[i].url}'><h3>${responseJson.routes[i].name}</h3></a>
+              <li>Type: ${responseJson.routes[i].type}</li>
+              <li>Grade: ${responseJson.routes[i].rating}</li>
+              <li>Stars: ${responseJson.routes[i].stars}</li>
+              <li>Location: ${responseJson.routes[i].location[1]}</li>
+            </ul>
           </div>`
         )};
 }
